@@ -1,22 +1,50 @@
-function getQuiz(questions) {
+class QuizController {
+  constructor(questions) {
     this.score = 0;
     this.questions = questions;
     this.questionIndex = 0;
+    // get users response
+    this.userAnswers = [];
+  }
 
-    getQuiz.prototype.getQuestionIndex = function () {
-        return this.questions[this.questionIndex];
+   getQuestionIndex() {
+    return this.questions[this.questionIndex];
+  }
+
+   isQuestionEnded() {
+    return this.questions.length === this.questionIndex;
+  }
+
+   trackGuess(score) {
+    //add user's score  
+    if (isFinite(score)) {
+        this.score += score;
     }
+      
+    this.userAnswers.push({
+      question: this.questionIndex + 1,
+      score: score
+    });
 
-    getQuiz.prototype.isEnded = function () {
-        return this.questions.length === this.questionIndex;
+     // store it to localstorage
+     localStorage.setItem("UserResponse", JSON.stringify(this.userAnswers));
+
+    // go to the next question
+       this.questionIndex++;
+  }
+}
+
+
+class Result {
+  static getResult(){
+    let result;
+    if (localStorage.getItem("UserResponse") === null) {
+      result = [];
+    } else {
+      result = JSON.parse(localStorage.getItem("UserResponse"));
     }
-
-    getQuiz.prototype.guess = function (answer) {
-       
-        if(this.getQuestionIndex().correctAnswer(answer)){
-            this.score++;
-        }
-
-        this.questionIndex++;
-    }
+    
+    return result;
+    
+  }
 }

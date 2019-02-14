@@ -1,11 +1,8 @@
-// Populate the UI with questions
-
-function Quiz(question, choices, answer) {
-    this.question = question;
-    this.choices = choices;
-    this.answer = answer;
+class Quiz {
+    constructor(question, choices, score){
+        this.question = question;
+        this.choices = choices;
+        this.score = score;
+    }
 }
 
-Quiz.prototype.correctAnswer = function(choice) {
-  return choice === this.answer;
-}

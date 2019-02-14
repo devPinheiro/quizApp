@@ -28,17 +28,23 @@ body{
 
 #display div> p {
   /* border-bottom: 1px solid #222; */
-  padding: 5px;
+  padding: 15px;
   text-align: center;
-  border-radius: 5px;
+  border-radius: 2px;
   box-shadow: 0px 0px 1px 1px rgba(206, 205, 205, 0.521);
-  border-top:1px solid rgb(247, 195, 51)
+ 
 }
 
 #display p:hover{
     background: rgba(105, 102, 102, 0.102)
 }
 
+#next {
+  padding: 15px;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0px 0px 1px 1px rgba(206, 205, 205, 0.521);
+}
 .mt {
   margin-top: 50px;
 }
